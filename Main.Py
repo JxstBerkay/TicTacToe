@@ -8,7 +8,7 @@ currentindex = 0
 
 Flag = True
 
-Movecounter = 0 #Keeping track For The Moves
+Movecounter = 0 #Keeping track of The Moves
 def printboard(board):
     print([board[0],board[1],board[2]])
     print([board[3],board[4],board[5]])
@@ -68,3 +68,4 @@ while Flag:
             printboard(Board)
             windetection(Board)
             currentindex += 1
+
