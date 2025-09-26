@@ -8,6 +8,7 @@ currentindex = 0
 
 Flag = True
 
+Movecounter = 0 #Keeping track For The Moves
 def printboard(board):
     print([board[0],board[1],board[2]])
     print([board[3],board[4],board[5]])
@@ -16,6 +17,9 @@ def printboard(board):
 def windetection(board):
     #vertical detection
     global Flag
+
+    
+
     if board[0] == board[1] == board[2] and board[2] != "-":
         print(f"{playertable[currentindex]} WON!")
         Flag = False
@@ -43,6 +47,12 @@ def windetection(board):
     elif  board[6] == board[4] == board[2] and board[4] != "-":
          print(f"{playertable[currentindex]} WON!")
          Flag = False
+    
+    if Movecounter == 9 and Flag == True:
+        print(f"No One Won.")
+        Flag = False
+    
+
 printboard(Board)
 
 while Flag:
@@ -51,8 +61,9 @@ while Flag:
     plrinput = int(input(f"Its The Turn Of {playertable[currentindex]} ") )
     
 
-    if plrinput < 9 and plrinput >= 0:
+    if plrinput <= 9 and plrinput >= 0:
         if Board[plrinput -1] == "-":
+            Movecounter += 1
             Board[plrinput -1 ] = playertable[currentindex]
             printboard(Board)
             windetection(Board)
